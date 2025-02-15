@@ -1,0 +1,139 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+.login-container {
+    background-image: url('../../assets/login1.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    align-items: center;
+    width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.modal-logo {
+    width: 35vh;
+    height: 35vh;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+p {
+    color:white;
+    font-size: medium;
+    margin-bottom: 10px;
+
+}
+
+input {
+    width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+input::placeholder {
+    color: #ccc;
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%; 
+    margin: 8px 0;
+
+}
+
+.forgot-password {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.7rem;
+}
+
+.checkbox-container label {
+    display:inline-flex;
+    align-items: center;
+    font-size: 0.7rem;
+}
+
+.checkbox-container input {
+    display: inline-block;
+    height: 15px;
+    width:30px;
+    margin-right: 5px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+button {
+    width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; 
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.signup-container {
+    background-image: url('../../assets/login1.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ margin-top: 20px;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+.signup-link {
+    color: #007bff; 
+    text-decoration: none;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
