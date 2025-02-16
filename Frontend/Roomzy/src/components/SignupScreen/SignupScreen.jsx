@@ -7,16 +7,15 @@ const Signup = () => {
     <div className="signup-container">
       <div className="modal">
         <img src={SignupImage} alt="Logo" className="modal-logo" />
-        <h2>Sign In</h2>
+        <h2>Sign Up</h2>
         <p>Welcome! Please enter your details to sign in</p>
         <form className="form-container">
           <input type="text" placeholder="First Name" required />
           <input type="text" placeholder="Last Name" required />
           <input type="text" placeholder="Email" required />
           <input type="password" placeholder="Password" required />
-          <input type="text" placeholder="Contact Number" />
 
-          <button type="signup">Sign In</button>
+          <button type="signup">Sign Up</button>
         </form>
       </div>
     </div>

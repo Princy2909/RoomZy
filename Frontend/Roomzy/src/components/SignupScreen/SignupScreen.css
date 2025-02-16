@@ -100,7 +100,7 @@ input::placeholder {
 }
 
 button {
-    width: 95%;
+    width: 35%;
     padding: 10px;
     margin: 10px 0;
     border: none;
@@ -125,7 +125,7 @@ button:hover {
     justify-content: center;
     align-items: center;
  margin-top: 20px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #fff;
 }
 
