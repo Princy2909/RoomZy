@@ -8,7 +8,7 @@ const Signup = () => {
       <div className="modal">
         <img src={SignupImage} alt="Logo" className="modal-logo" />
         <h2>Sign Up</h2>
-        <p>Welcome! Please enter your details to sign in</p>
+        <p>Welcome! Please enter your details to sign up</p>
         <form className="form-container">
           <input type="text" placeholder="First Name" required />
           <input type="text" placeholder="Last Name" required />
