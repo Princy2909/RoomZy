@@ -1,5 +1,4 @@
 const authService = require("../services/authService");
-const { userTokenAuth } = require("../middlewares/auth");
 
 const signup = async (req, res) => {
   try {
@@ -54,20 +53,5 @@ const resetPassword = async (req, res) => {
   }
 };
 
-const listroom =  async (req, res) => {
-  try {
-    return authService.addNewRoom(req, res); // Pass the res object to addroom
-  } catch (err) {
-    res.status(400).json(err.message);
-  }
-};
 
-const edit_room =  async (req, res) => {
-  try {
-    return authService.editRoom(req, res); // Pass the res object to edit_roomInfo
-  } catch (err) {
-    res.status(400).json(err.message);
-  }
-};
-
-module.exports = { signup, verifyOTP, login, forgotPassword, resetPassword ,listroom,edit_room};
+module.exports = { signup, verifyOTP, login, forgotPassword, resetPassword };
