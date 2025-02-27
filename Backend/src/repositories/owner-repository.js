@@ -113,4 +113,3 @@ const edit_roomInfo =  async (req, res) => {
 };
 
 module.exports = { addroom, edit_roomInfo };
-

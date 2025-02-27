@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const UserRepository = require("../repositories/user-repository");
 const { sendEmail } = require("../utils/sendEmail");
+const {addroom,edit_roomInfo} = require("../repositories/owner-repository");
 
 const generateToken = (user) => {
   return jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, {
@@ -72,4 +73,12 @@ const resetPassword = async (email, otp, newPassword) => {
   return { message: "Password reset successful" };
 };
 
-module.exports = { signup, verifyOTP, login, forgotPassword, resetPassword };
+const addNewRoom=async(req,res)=>{
+  return addroom(req,res);
+}
+
+const editRoom=async(req,res)=>{
+  return edit_roomInfo(req,res);
+}
+
+module.exports = { signup, verifyOTP, login, forgotPassword, resetPassword,addNewRoom,editRoom};
