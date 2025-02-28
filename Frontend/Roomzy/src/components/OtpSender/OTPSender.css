@@ -1,16 +1,4 @@
-/* OTP Modal - Matches Forgot Password */
-/* .otp-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white; /* Matches Forgot Password modal */
-  /* padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  width: 350px;
-  text-align: center;
-} */ */
+
 
 /* OTP Card */
 .otp-card {
@@ -70,7 +58,6 @@
   background: #128066;
 }
 
-/* Close Button */
 .close-modal {
   margin-top: 10px;
   background: none;
