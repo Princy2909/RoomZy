@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './LoginScreen.css';
 import loginImage from '../../assets/account.png';
+import ForgotPasswordModal from '../forgotPassword/ForgotPasswordModal'; // Import the ForgotPasswordModal
 
 const LoginScreen = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleForgotPasswordClick = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <div className="login-container">
             <div className="modal">
@@ -18,7 +29,7 @@ const LoginScreen = () => {
                             <input type="checkbox" />
                             Remember Me
                         </label>
-                        <a href="/forgot-password" className="forgot-password">Forgot Password?</a>
+                        <a href="#" onClick={handleForgotPasswordClick} className="forgot-password">Forgot Password?</a>
                     </div>
 
                     <button type="submit">Sign in</button>
@@ -28,6 +39,8 @@ const LoginScreen = () => {
                     </div>
                 </form>
             </div>
+
+            <ForgotPasswordModal isOpen={isModalOpen} onClose={handleCloseModal} />
         </div>
     );
 };
