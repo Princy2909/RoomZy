@@ -15,6 +15,6 @@ router.post("/forgot-password", authController.forgotPassword);
 router.post("/reset-password", authController.resetPassword);
 router.post("/owner/listroom",userTokenAuth,roomController.listroom);
 router.post("/owner/edit_room/:room_id",userTokenAuth,roomController.edit_room);
-
+router.post("/owner/roomfeed",roomController.room_feed);
 
 module.exports = router;

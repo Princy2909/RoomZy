@@ -23,6 +23,7 @@ const addroom =  async (req, res) => {
                     profilePicture,
                 },
                 roomDetails: [{
+                    ownerId: id,
                     price,
                     location: {
                         address,
@@ -51,6 +52,7 @@ const addroom =  async (req, res) => {
         } else {
             // If the owner exists, push the new room details into the roomDetails array
             owner.roomDetails.push({
+                ownerId: id,
                 price,
                 location: {
                     address,

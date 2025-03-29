@@ -1,5 +1,6 @@
+const Owner = require("../models/OwnerModel");
 const roomService= require("../services/roomService");
-
+const { userTokenAuth } = require("../middlewares/auth");
 
 const listroom =  async (req, res) => {
     try {
@@ -17,4 +18,14 @@ const listroom =  async (req, res) => {
     }
   };
 
-  module.exports = {listroom,edit_room};
+  //  feed api
+  const room_feed= async(req, res)=>{
+    try{
+    return roomService.room_feed(req,res);
+    }catch(err){
+      res.status(400).send(err.message);
+    }
+
+  }
+
+  module.exports = {listroom,edit_room,room_feed};
