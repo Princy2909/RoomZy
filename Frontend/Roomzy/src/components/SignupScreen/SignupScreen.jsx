@@ -1,6 +1,6 @@
 import React from "react";
-import '../src/components/SignupScreen/SignupScreen.css'
-import SignupImage from '../src/assets/account.png'
+import './SignupScreen.css'
+import SignupImage from '../../assets/account.png';
 
 const Signup = () => {
   return (
