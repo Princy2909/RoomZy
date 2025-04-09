@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import './Search_section.css';
 
 const sections = [
-  { id: 1, name: 'Buy', color: '#FFC107' },
-  { id: 2, name: 'Rent', color: '#28A745' },
-  { id: 3, name: 'Commercial', color: '#17A2B8' },
-  { id: 4, name: 'PG/Co-Living', color: '#DC3545' },
-  { id: 5, name: 'Plots', color: '#6F42C1' },
+ 
+  { id: 1, name: 'Rent', color: '#28A745' },
+  { id: 2, name: 'Furnished', color: '#17A2B8' },
+  { id: 3, name: 'ListingType', color: '#DC3545' },
+  { id: 4, name: 'OccupancyType', color: '#6F42C1' },
 ];
 
 const cities = ['Mumbai', 'Delhi', 'Bangalore', 'Chennai', 'Kolkata', 'Pune', 'Hyderabad'];
