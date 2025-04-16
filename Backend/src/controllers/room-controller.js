@@ -87,6 +87,18 @@ const getRoomsByFilters = async (req, res) => {
   }
 };
 
+const reviewRoom= async (req,res)=>{
+  try{
+    
+    const review= await rentalPropertyService.postRoomReview(req,res);
+    res.status(200).json(review);
+    
+  } catch(err){
+    
+    res.status(500).json({error: err.message});
+  }
+}
+
 module.exports = {
   createRoom,
   getAllRooms,
@@ -95,4 +107,5 @@ module.exports = {
   updateRoom,
   deleteRoom,
   getRoomsByFilters,
+  reviewRoom
 };
