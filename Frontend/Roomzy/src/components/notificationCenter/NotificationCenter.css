@@ -1,0 +1,126 @@
+.notification-container {
+    position: relative;
+  }
+  
+  .notification-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    color: #333;
+  }
+  
+  .notification-count {
+    background: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+  }
+  
+  .notification-panel {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .notification-panel.open {
+    right: 0;
+  }
+  
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .notification-tabs {
+    display: flex;
+    justify-content: space-around;
+    background: #f1f1f1;
+    padding: 10px 0;
+  }
+  
+  .notification-tabs button {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 8px 15px;
+  }
+  
+  .notification-tabs .active {
+    border-bottom: 3px solid #007bff;
+    font-weight: bold;
+  }
+  
+  .notification-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    max-height: 80vh; /* Makes it scrollable */
+  }
+  
+  .notification-item {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .notification-item.unread {
+    background:#D8E2DC;
+  }
+  
+  .notification-item.read {
+    background: #f0f0f0;
+  }
+  
+  .notification-item:hover {
+    background: #bbdef0;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .notification-message {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .notification-time {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .no-notifications {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+  }
