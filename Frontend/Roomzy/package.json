@@ -10,9 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.0.17",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+<<<<<<< HEAD
     "react-router-dom": "^7.6.0"
+=======
+    "react-icons": "^5.5.0",
+    "tailwindcss": "^4.0.17"
+>>>>>>> a8b444ed36079307b6d149693b444207f085b80b
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
