@@ -1,0 +1,129 @@
+.search-section {
+  text-align: center;
+  padding: 30px;
+  border-radius: 12px;
+  color: black;
+  max-width: 600px;
+  margin: auto;
+  background: rgb(140, 164, 243);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Improved heading */
+.search-line {
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Centering and making search input more stylish */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Modern input field */
+.search-input {
+  padding: 12px;
+  width: 280px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Input field hover and focus effects */
+.search-input:hover, 
+.search-input:focus {
+  border-color: #007BFF;
+  outline: none;
+  box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Stylish search button */
+.search-button {
+  padding: 12px 18px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Suggestions box */
+.suggestion-box {
+  background: white;
+  list-style: none;
+  padding: 10px;
+  margin: 8px auto;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 290px;
+  font-size: 14px;
+}
+
+/* Styling for each suggestion item */
+.suggestion-box li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.suggestion-box li:hover {
+  background: #f0f0f0;
+}
+
+/* Section container for different property types */
+.section-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+/* Section styling */
+.section {
+  padding: 15px 20px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: white;
+}
+
+/* Section hover effect */
+.section:hover {
+  transform: scale(1.05);
+  background-color: #f8f9fa;
+}
+
+/* Active section */
+.section.active {
+  color: white;
+  border: none;
+}
+
+/* Apply colors to sections dynamically */
+.section:nth-child(1).active { background-color: #FFC107; } /* Buy */
+.section:nth-child(2).active { background-color: #28A745; } /* Rent */
+.section:nth-child(3).active { background-color: #17A2B8; } /* Commercial */
+.section:nth-child(4).active { background-color: #DC3545; } /* PG/Co-Living */
+.section:nth-child(5).active { background-color: #6F42C1; } /* Plots */
