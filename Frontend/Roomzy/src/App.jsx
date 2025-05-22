@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import Body from "./components/Body/Body"
 
-import LoginScreen from "./components/loginScreen/LoginScreen"
+// import LoginScreen from "./components/loginScreen/LoginScreen"
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       
-      <LoginScreen />
+      <Body />
       
      
      
