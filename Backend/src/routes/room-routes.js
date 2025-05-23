@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const rentalPropertyController = require("../controllers/room-controller");
+const rentalPropertyController2= require("../controllers/room-controller2");
+
 // api  for this folder  api/rooms/crete,.....,;
 // Create a new room
 router.post("/create", rentalPropertyController.createRoom);
@@ -19,5 +21,17 @@ router.patch("/:roomId", rentalPropertyController.updateRoom);
 
 // Delete a room
 router.delete("/:roomId", rentalPropertyController.deleteRoom);
+
+// Add a reviw to a room
+router.post("/roomReview/:roomId/",rentalPropertyController2.postReview);
+
+// update review
+router.put("/editReview/:roomId/:reviewId",rentalPropertyController2.editReview);
+
+// delete review
+router.delete("/deleteReview/:roomId/:reviewId", rentalPropertyController2.deleteReview);
+
+// get all review of a room
+router.get("/roomReview/:roomId/",rentalPropertyController2.getAllReviews);
 
 module.exports = router;
