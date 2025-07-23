@@ -1,21 +1,24 @@
-import { useState, useRef } from "react";
-import "./OTPSender.css"; // Import CSS file
+import React, { useState, useRef } from "react";
+import "./OTPSender.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "../../utils/constants"; // Ensure this points correctly
 
-const OtpSender = ({ onClose }) => {
-  const [otp, setOtp] = useState(new Array(6).fill(""));
+const OtpSender = () => {
+  const [otp, setOtp] = useState(new Array(4).fill(""));
   const inputRefs = useRef([]);
+  const navigate = useNavigate();
 
   const handleChange = (index, e) => {
-    const value = e.target.value.replace(/\D/g, ""); // Allow only numbers
-    if (value.length > 1) return; // Prevent multiple digits
+    const value = e.target.value.replace(/\D/g, "");
+    if (value.length > 1) return;
 
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
 
-    // Move to the next input if filled
-    if (value && index < 5) {
-      setTimeout(() => inputRefs.current[index + 1]?.focus(), 50);
+    if (value && index < 3) {
+      inputRefs.current[index + 1]?.focus();
     }
   };
 
@@ -25,19 +28,30 @@ const OtpSender = ({ onClose }) => {
       newOtp[index] = "";
       setOtp(newOtp);
 
-      if (index > 0) {
-        setTimeout(() => inputRefs.current[index - 1]?.focus(), 50);
+      if (index > 0 && !otp[index]) {
+        inputRefs.current[index - 1]?.focus();
       }
     }
   };
 
-  const handleVerify = () => {
+  const handleVerify = async () => {
     const enteredOtp = otp.join("");
-    if (enteredOtp.length === 6) {
+
+    if (enteredOtp.length !== 4) {
+      alert("Please enter a valid 4-digit OTP");
+      return;
+    }
+
+    try {
+      const response = await axios.post(`${BASE_URL}/api/auth/verify-otp`, {
+        otp: enteredOtp,
+      });
+
       alert("OTP Verified Successfully!");
-      window.location.reload();
-    } else {
-      alert("Please enter a valid 6-digit OTP");
+      navigate("/body");
+    } catch (error) {
+      console.error(error);
+      alert(error.response?.data?.message || "OTP verification failed");
     }
   };
 
@@ -57,14 +71,13 @@ const OtpSender = ({ onClose }) => {
               onKeyDown={(e) => handleKeyDown(index, e)}
               ref={(el) => (inputRefs.current[index] = el)}
               className="otp-box"
-              disabled={index > 0 && otp[index - 1] === ""}
+              autoFocus={index === 0}
             />
           ))}
         </div>
         <button onClick={handleVerify} className="otp-button">
           Verify OTP
         </button>
-        <button className="close-modal" onClick={onClose}>Back</button>
       </div>
     </div>
   );

@@ -1,5 +1,9 @@
 const nodemailer = require("nodemailer");
 
+
+const dotenv = require("dotenv");
+dotenv.config();
+
 const sendEmail = async (to, subject, text) => {
   try {
     const transporter = nodemailer.createTransport({
@@ -19,3 +23,28 @@ const sendEmail = async (to, subject, text) => {
 };
 
 module.exports = { sendEmail };
+
+// const sendEmail = async (
+//     senderEmail: string,
+//     senderPassword: string,
+//     recivers: string[],
+//     message: string
+// ): Promise<void> => {
+//     const transporter = nodemailer.createTransport({
+//         service: 'gmail',
+//         auth: {
+//             user: senderEmail,
+//             pass: senderPassword,
+//         },
+//     });
+
+//     const mailOptions = {
+//         from: senderEmail,
+//         to: recivers.join(','),
+//         subject: 'Elective Notification',
+//         text: `${message}\n\nWebsite : https://elective.vercel.app`,
+//     };
+
+//     const emailResponse = await transporter.sendMail(mailOptions);
+//     console.log('Email sent:', emailResponse);
+// };

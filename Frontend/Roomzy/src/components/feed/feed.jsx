@@ -1,49 +1,110 @@
-import React, { useState } from "react";
-import "./Feed.css";
-import Card from "../feed/Card"; // ✅ Import Card component
+import React, { useState } from 'react';
+import './Feed.css';
+import { useNavigate } from 'react-router-dom';
+import { FaStar, FaComments } from 'react-icons/fa';
 
 const Feed = () => {
-  const properties = [
-    { id: 1, image: "https://housing-images.n7net.in/4f2250e8/857dbfa14c6251d7a79818de5d629400/v0/large/house2.jpeg", title: "House 1", description: "Beautiful house in a prime area.", price: "$250,000", rating: "4.5" },
-    { id: 2, image: "https://housing-images.n7net.in/4f2250e8/857dbfa14c6251d7a79818de5d629400/v0/large/house2.jpeg", title: "House 2", description: "Spacious garden with modern amenities.", price: "$350,000", rating: "4.8" },
-    { id: 3, image: "https://housing-images.n7net.in/4f2250e8/857dbfa14c6251d7a79818de5d629400/v0/large/house2.jpeg", title: "House 3", description: "Cozy house perfect for families.", price: "$200,000", rating: "4.3" },
-    { id: 4, image: "https://housing-images.n7net.in/4f2250e8/857dbfa14c6251d7a79818de5d629400/v0/large/house2.jpeg", title: "House 4", description: "Luxury villa with sea view.", price: "$1,200,000", rating: "5.0" },
-    { id: 5, image: "https://housing-images.n7net.in/4f2250e8/857dbfa14c6251d7a79818de5d629400/v0/large/house2.jpeg", title: "House 5", description: "Modern apartment in the city center.", price: "$450,000", rating: "4.7" },
-    { id: 6, image: "https://housing-images.n7net.in/4f2250e8/857dbfa14c6251d7a79818de5d629400/v0/large/house2.jpeg", title: "House 6", description: "Classic bungalow with a big lawn.", price: "$320,000", rating: "4.6" },
+  const navigate = useNavigate();
+
+  const data = [
+    {
+      id: 1,
+      title: 'Deluxe Room',
+      desc: 'Spacious room with ocean view.',
+      price: "₹25,000",
+      rating: 4,
+      img: 'https://housing-images.n7net.in/4f2250e8/857dbfa14c6251d7a79818de5d629400/v0/large/house2.jpeg',
+    },
+    {
+      id: 2,
+      title: 'Studio Apartment',
+      desc: 'Cozy and modern interior.',
+      price: "₹15,000",
+      rating: 5,
+      img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2',
+    },
+    {
+      id: 3,
+      title: 'Single Room',
+      desc: 'Ideal for students or solo travelers.',
+      price: "₹35,000",
+      rating: 3,
+      img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
+    },
+    {
+      id: 4,
+      title: 'Family Suite',
+      desc: 'Perfect for family vacations.',
+      price: "₹40,000",
+      rating: 4,
+      img: 'https://housing-images.n7net.in/4f2250e8/857dbfa14c6251d7a79818de5d629400/v0/large/house2.jpeg',
+    },
+    {
+      id: 5,
+      title: 'Penthouse View',
+      desc: 'Top-floor luxury suite.',
+      price: "₹60,000",
+      rating: 5,
+      img: 'https://images.unsplash.com/photo-1599423300746-b62533397364',
+    },
+    {
+      id: 6,
+      title: 'Modern Flat',
+      desc: 'Comfortable for working professionals.',
+      price: "₹30,000",
+      rating: 4,
+      img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2',
+    },
   ];
 
-  const [index, setIndex] = useState(0);
+  const [selectedProperty, setSelectedProperty] = useState(null);
 
-  const handleNext = () => {
-    if (index < properties.length - 3) {
-      setIndex(index + 1);
-    }
+  const openReview = (property) => {
+    setSelectedProperty(property);
   };
 
-  const handlePrev = () => {
-    if (index > 0) {
-      setIndex(index - 1);
-    }
+  const closeReview = () => {
+    setSelectedProperty(null);
   };
+
+  const getStars = (rating) =>
+    [...Array(5)].map((_, i) =>
+      i < rating ? <FaStar key={i} color="gold" /> : <FaStar key={i} color="#ccc" />
+    );
 
   return (
-    <div className="feed-container">
-      <div className="feed-wrapper">
-        {index > 0 && <button className="arrow left-arrow" onClick={handlePrev}>&#8249;</button>}
-        <div className="feed-list" style={{ transform: `translateX(-${index * 300}px)` }}>
-          {properties.map((property) => (
-            <Card 
-              key={property.id} 
-              image={property.image} 
-              title={property.title} 
-              description={property.description} 
-              price={property.price} 
-              rating={property.rating} 
-            />
-          ))}
-        </div>
-        {index < properties.length - 3 && <button className="arrow right-arrow" onClick={handleNext}>&#8250;</button>}
+    <div className="feed-slider-container">
+      <h2>Available Rooms</h2>
+      <div className="card-slider">
+        {data.map((item) => (
+          <div className="card" key={item.id}>
+            <img src={item.img} alt={item.title} />
+            <h3 className="details">{item.title}</h3>
+            <p className="details">{item.desc}</p>
+            <p className="details">{item.price}</p>
+            <div className="rating">{getStars(item.rating)}</div>
+            <div className="review-actions">
+              <button className="review-btn" onClick={() => openReview(item)}>
+                Write a Review
+              </button>
+              <button className="see-reviews" onClick={() => navigate('/review')}>
+                See All Reviews <FaComments />
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
+
+      {selectedProperty && (
+        <div className="review-modal">
+          <div className="review-content">
+            <span className="close-btn" onClick={closeReview}>&times;</span>
+            <h3>Write a Review for {selectedProperty.title}</h3>
+            <textarea placeholder="Enter your review here..."></textarea>
+            <button className="submit-review">Submit</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
