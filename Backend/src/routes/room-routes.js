@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const rentalPropertyController = require("../controllers/room-controller");
+
 // api  for this folder  api/rooms/crete,.....,;
 // Create a new room
 router.post("/create", rentalPropertyController.createRoom);
@@ -19,5 +20,7 @@ router.patch("/:roomId", rentalPropertyController.updateRoom);
 
 // Delete a room
 router.delete("/:roomId", rentalPropertyController.deleteRoom);
+
+router.post("/roomreview/:roomId",rentalPropertyController.reviewRoom);
 
 module.exports = router;

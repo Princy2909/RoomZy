@@ -105,6 +105,34 @@ const getRoomsByFilters = async (filters) => {
   }
 };
 
+const postRoomReview=async(req,res)=>{
+    const { roomId } = req.params;
+    const { userId, rating, text } = req.body; // Assuming userId is passed in the body
+  
+    try {
+      // Check if the user has already reviewed this property
+      const property = await Room.findById(roomId);
+      const existingReview = property.reviews.find(review => review.user.toString() === userId);
+  
+      if (existingReview) {
+        
+        return { message: "User  has already reviewed this property." };
+      }
+  
+      // Create a new review
+      const newReview = { user: userId, rating, text };
+      property.reviews.push(newReview);
+      await property.save();
+  
+      return { message: "Review added successfully.", property };
+    } catch (error) {
+      // console.log("err1")
+      return { message: "Error adding review.", error};
+    }
+  
+}
+
+
 module.exports = {
   createRoom,
   getAllRooms,
@@ -113,4 +141,5 @@ module.exports = {
   updateRoom,
   deleteRoom,
   getRoomsByFilters,
+  postRoomReview
 };

@@ -1,5 +1,12 @@
 const mongoose = require("mongoose");
 
+const ReviewSchema = new mongoose.Schema({      // changed
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User ", required: true },
+  rating: { type: Number, min: 1, max: 5}, // Rating between 1 and 5
+  text: { type: String, maxlength: 1000 }, // Review text
+  createdAt: { type: Date, default: Date.now }
+});
+
 const RentalPropertySchema = new mongoose.Schema({
   // Reference to the User (Owner of the Property)
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, 
@@ -63,6 +70,8 @@ const RentalPropertySchema = new mongoose.Schema({
       message: "Invalid image URL format!"
     }
   }],
+
+  reviews: [ReviewSchema],   // changed
 
   createdAt: { type: Date, default: Date.now }
 });

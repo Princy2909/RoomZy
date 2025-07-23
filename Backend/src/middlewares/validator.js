@@ -1,5 +1,6 @@
 const { StatusCodes } = require("http-status-codes");
 const validator = require("validator");
+const Room = require("../models/roommodel");
 
 function validateSignup(req, res, next) {
     if (!req.body.firstName) {
@@ -32,4 +33,20 @@ function validateSignup(req, res, next) {
     next();
 }
 
-module.exports = { validateSignup };
+const isOwner = (req, res, next) => {
+    
+    const { roomId } = req.params;
+    const userId = req.body.userId; // Assuming you have user info in req.user
+  
+    // RentalProperty.findById(roomId)
+    Room.findById(roomId)
+      .then(property => {
+        if (property.owner.toString() === userId.toString()) {
+          return res.status(403).json({ message: "Owners cannot review their own property." });
+        }
+        next();
+      })
+      .catch(err => res.status(500).json({ message: "Error finding property." }));
+  };
+
+module.exports = { validateSignup,isOwner };
