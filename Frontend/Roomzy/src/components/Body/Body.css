@@ -1,8 +1,4 @@
-.body-container {
-    background-color: #6aceedc4;
-    min-height: 100vh;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.body-container > * {
+  margin-bottom: 20px; /* or whatever space you prefer */
+  /* background-color: aquamarine; */
+}
