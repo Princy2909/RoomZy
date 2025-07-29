@@ -23,4 +23,6 @@ router.delete("/:roomId", rentalPropertyController.deleteRoom);
 
 router.post("/roomreview/:roomId",rentalPropertyController.reviewRoom);
 
+// router.post("/listroom",rentalPropertyController.)
+
 module.exports = router;
