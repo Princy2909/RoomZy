@@ -28,10 +28,10 @@ const LoginScreen = () => {
                 email,
                 password,
             });
-
             const { token } = response.data;
+            
             localStorage.setItem("authToken", token);
-            alert("Login successful!");
+            alert("Login Succesfull !");
             navigate("/body"); // ✅ redirect after login
         } catch (err) {
             console.error(err);

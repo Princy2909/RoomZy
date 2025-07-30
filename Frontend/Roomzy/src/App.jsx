@@ -16,7 +16,7 @@ function App() {
         <Route path="/signup" element={<SignupScreen />} />
         <Route path="/body" element={<Body />} />
         <Route path="/otp" element={<OtpSender />} /> {/* ✅ Added OTP route */}
-        <Route path="/Listing" element={<Listing />} />
+        <Route path="/listing" element={<Listing />} />
          <Route path="/review" element={<Review />} />
          <Route path="/notification" element={<Notification/>} />
       </Routes>

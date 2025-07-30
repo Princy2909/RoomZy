@@ -9,6 +9,7 @@ const generateToken = (user) => {
   });
 };
 const generateOTP = () => Math.floor(1000 + Math.random() * 9000).toString();
+
 const signup = async (userData) => {
   const existingUser = await UserRepository.findByEmail(userData.email);
   if (existingUser) throw new Error("User already exists");
