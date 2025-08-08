@@ -1,13 +1,25 @@
 const rentalPropertyService = require("../services/room-service");
 
-// ✅ 1️⃣ Create a new room
 const createRoom = async (req, res) => {
   try {
+
     const roomData = req.body;
+    const ownerId=req?.user?._id;
+    roomData.owner=ownerId;
+
+    const imageUrls = req.files?.map((file) => file.path);
+    if (!imageUrls || imageUrls.length === 0) {
+      return res.status(400).json({ error: "At least one photo is required." });
+    }
+    roomData.photos = imageUrls;
+    
     const newRoom = await rentalPropertyService.createRoomService(roomData);
     res.status(201).json({ message: "Room created successfully!", room: newRoom });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error("Error in createRoom: ", error.message);
+    if (!res.headersSent) {
+      return res.status(500).json({ error: error.message });
+    }
   }
 };
 
@@ -24,7 +36,9 @@ const getAllRooms = async (req, res) => {
 // ✅ 3️⃣ Get rooms by Owner ID
 const getRoomsByOwner = async (req, res) => {
   try {
-    const { ownerId } = req.params;
+    // const { ownerId } = req.params;
+
+    const ownerId=req?.user?._id;
     const rooms = await rentalPropertyService.getRoomsByOwnerService(ownerId);
     res.status(200).json(rooms);
   } catch (error) {
